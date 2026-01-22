@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주종 큐레이션</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <h1>주종 큐레이션</h1>
+          <p>딱 맞는 한 곳을 고르고, 위치·길찾기·리뷰는 네이버지도에서 확인</p>
+        </div>
+      </div>
+      <div class="hint">
+        <span class="pill">AND 추천</span>
+        <span class="pill">큐레이션 메모</span>
+      </div>
+    </header>
+
+    <!-- Screen 1: Category -->
+    <section id="screen-category" class="card">
+      <div class="section-head">
+        <h2>1) 주종 선택</h2>
+        <p class="muted">원하는 주종을 먼저 고르면, 다음 화면에서 상황/분위기 필터를 고를 수 있어.</p>
+      </div>
+      <div id="category-grid" class="grid"></div>
+    </section>
+
+    <!-- Screen 2: Filters -->
+    <section id="screen-filters" class="card hidden">
+      <div class="section-head row">
+        <div>
+          <h2 id="filters-title">2) 필터 선택</h2>
+          <p class="muted">선택한 키워드가 <b>모두 포함된</b> 가게만 추천해.</p>
+        </div>
+        <div class="row">
+          <button id="btn-back-to-category" class="btn ghost">← 주종 다시 선택</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-block">
+          <div class="filter-head">
+            <h3>누구랑</h3>
+            <p class="muted">복수 선택 가능</p>
+          </div>
+          <div id="chips-withwho" class="chips"></div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-head">
+            <h3>언제</h3>
+            <p class="muted">복수 선택 가능</p>
+          </div>
+          <div id="chips-when" class="chips"></div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-head">
+            <h3>분위기</h3>
+            <p class="muted">복수 선택 가능</p>
+          </div>
+          <div id="chips-mood" class="chips"></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="btn-reset" class="btn ghost">선택 초기화</button>
+        <button id="btn-recommend" class="btn">추천 보기</button>
+      </div>
+    </section>
+
+    <!-- Screen 3: Results -->
+    <section id="screen-results" class="card hidden">
+      <div class="section-head row">
+        <div>
+          <h2 id="results-title">3) 추천 결과</h2>
+          <p id="results-sub" class="muted">선택 조건을 모두 만족하는 가게만 보여줘.</p>
+        </div>
+        <div class="row">
+          <button id="btn-back-to-filters" class="btn ghost">← 필터로</button>
+        </div>
+      </div>
+
+      <div id="results-empty" class="empty hidden">
+        <h3>조건을 모두 만족하는 가게가 없어</h3>
+        <p class="muted">필터를 조금 줄이거나, 가게 데이터를 더 추가해봐.</p>
+      </div>
+
+      <ul id="shop-list" class="shop-list"></ul>
+    </section>
+
+    <!-- Modal: Shop Detail -->
+    <div id="modal" class="modal hidden">
+      <div id="modal-backdrop" class="modal-backdrop"></div>
+
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-head">
+          <div>
+            <h3 id="m-title">가게 이름</h3>
+            <p id="m-oneLine" class="muted"></p>
+          </div>
+          <button id="m-close" class="btn ghost">닫기</button>
+        </div>
+
+        <img id="m-image" class="modal-image" alt="가게 사진" />
+
+        <div class="modal-body">
+          <div class="kv">
+            <div class="k">가격대</div>
+            <div id="m-price" class="v">-</div>
+          </div>
+          <div class="kv">
+            <div class="k">키워드</div>
+            <div id="m-tags" class="v tags"></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h4>큐레이션 메모</h4>
+          <p id="m-note" class="note"></p>
+
+          <div class="two-col">
+            <div>
+              <h4>👍 추천 포인트</h4>
+              <ul id="m-pros" class="bullets"></ul>
+            </div>
+            <div>
+              <h4>⚠️ 참고</h4>
+              <ul id="m-cons" class="bullets"></ul>
+            </div>
+          </div>
+
+          <div class="cta">
+            <a id="m-naver" class="btn link" href="#" target="_blank" rel="noopener">
+              위치, 길찾기, 리뷰는 네이버지도에서 확인 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <small>연습 프로젝트 · HTML/CSS/JS · 데이터는 script.js에서 직접 입력</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
